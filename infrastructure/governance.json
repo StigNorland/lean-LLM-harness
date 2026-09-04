@@ -1,1 +1,169 @@
-PLACEHOLDER
+{
+  "$comment": "Layout and policy for governance tooling. Consumers edit this file to adapt the portable infrastructure to their repository. Programme name and structure.required_paths are examples for lean-LLM-harness; change them for other programmes. See infrastructure/docs/methodology-scope.md.",
+  "schema_version": "1.0",
+  "programme": "lean-LLM-harness",
+  "method": "lean-LLM-harness",
+  "context": {
+    "$comment": "Deterministic cold-session loading. AGENTS.md is loaded by the agent runner; front doors form the verified navigation graph. Target profiles are examples — consumers adapt directory patterns.",
+    "automatic_instructions": ["AGENTS.md"],
+    "front_doors": [
+      "README.md",
+      "METHOD.md",
+      "lineage/README.md",
+      "infrastructure/README.md",
+      "infrastructure/research/README.md",
+      "infrastructure/verification/README.md",
+      "infrastructure/docs/README.md",
+      "infrastructure/agents/README.md",
+      "infrastructure/contracts/README.md"
+    ],
+    "required_sections": ["Start here", "Contents", "Required context", "Boundaries"],
+    "target_profiles": [
+      {
+        "directory_pattern": "lineage/techniques/T-*",
+        "files": [],
+        "globs": ["*.md"]
+      },
+      {
+        "directory_pattern": "results/issue-*",
+        "files": [
+          "protocol.json",
+          "decision.md",
+          "decision.json",
+          "result-receipt.json",
+          "completion-audit.json"
+        ]
+      }
+    ]
+  },
+  "layout": {
+    "$comment": "Configurable paths. Consumers remap studies_root / notary_root / template_prefixes for their tree.",
+    "studies_root": "results",
+    "notary_root": "notary",
+    "template_prefixes": [
+      "infrastructure/results/templates/",
+      "infrastructure/theories/template/",
+      "infrastructure/papers/template/"
+    ],
+    "text_suffixes": [".md", ".json", ".py", ".yml", ".yaml", ".txt"],
+    "text_names": ["LICENSE", ".gitignore", ".gitattributes"]
+  },
+  "reproduction": {
+    "$comment": "Tier commands are explicit declarations. Certificate tier is optional for consumers with Lean certificates.",
+    "tiers": {
+      "standard": [
+        ["python", "infrastructure/verification/verify_repository.py"],
+        ["python", "infrastructure/verification/govern.py", "check"],
+        ["python", "infrastructure/verification/admit.py"],
+        ["python", "-m", "pytest", "-q"]
+      ],
+      "full": [
+        ["python", "infrastructure/verification/verify_repository.py"],
+        ["python", "infrastructure/verification/govern.py", "check"],
+        ["python", "infrastructure/verification/admit.py"],
+        ["python", "infrastructure/verification/check_lineage.py"],
+        ["python", "-m", "pytest", "-q"]
+      ]
+    }
+  },
+  "structure": {
+    "$comment": "DECLARATION of expected layout. Edit required_paths for your programme; do not derive from the filesystem. SMF physics docs are intentionally omitted — this is portable method infrastructure.",
+    "required_paths": [
+      "README.md",
+      "METHOD.md",
+      "AGENTS.md",
+      "lineage/README.md",
+      "lineage/registry.json",
+      "infrastructure/README.md",
+      "infrastructure/governance.json",
+      "infrastructure/theories/gate-ladder.md",
+      "infrastructure/theories/formalization-standard.md",
+      "infrastructure/theories/candidate-directory-standard.md",
+      "infrastructure/instruments/README.md",
+      "infrastructure/tests/README.md",
+      "infrastructure/tests/independent-verification-standard.md",
+      "infrastructure/results/README.md",
+      "infrastructure/papers/authoring-standard.md",
+      "infrastructure/papers/citation-evidence-standard.md",
+      "infrastructure/papers/artifact-traceability-standard.md",
+      "infrastructure/papers/semantic-review-standard.md",
+      "infrastructure/papers/replication-standard.md",
+      "infrastructure/papers/submission-standard.md",
+      "infrastructure/research/practices.md",
+      "infrastructure/research/research-method.md",
+      "infrastructure/research/issue-workflow.md",
+      "infrastructure/research/issue-hierarchy.md",
+      "infrastructure/research/work-tiers.md",
+      "infrastructure/research/sealing-and-living.md",
+      "infrastructure/research/session-packet.md",
+      "infrastructure/research/agent-workspaces.md",
+      "infrastructure/research/claim-registry.md",
+      "infrastructure/research/reproduction-tiers.md",
+      "infrastructure/docs/readme-navigation.md",
+      "infrastructure/docs/methodology-scope.md",
+      "infrastructure/agents/README.md",
+      "infrastructure/agents/routing.json",
+      "infrastructure/agents/task-types.md",
+      "infrastructure/agents/agent-run-receipts.md",
+      "infrastructure/agents/skills/catalog.json",
+      "infrastructure/agents/skills/kernel.md",
+      "infrastructure/verification/admit.py",
+      "infrastructure/verification/check_lineage.py",
+      "infrastructure/verification/govern.py",
+      "infrastructure/verification/verify_repository.py",
+      "infrastructure/verification/retired-units.json",
+      "infrastructure/verification/validated-suites.json",
+      "infrastructure/contracts/retired-units.schema.json",
+      "infrastructure/contracts/validated-suites.schema.json",
+      "infrastructure/contracts/artifact-contract.md",
+      "infrastructure/contracts/contract-index.json",
+      "infrastructure/automation/README.md",
+      "infrastructure/automation/agent-review-loop.md",
+      "infrastructure/automation/review_loop.py"
+    ],
+    "living_path_prefixes": ["docs/", "infrastructure/", "lineage/", "schemas/", "releases/", ".github/"],
+    "living_path_prefixes_rationale": "These surfaces may change without being treated as sealed scientific results.",
+    "pin_exempt_path_prefixes": ["docs/", "infrastructure/", "lineage/", "schemas/", "releases/", ".github/", "AGENTS.md", "METHOD.md"],
+    "pin_exempt_path_prefixes_rationale": "Hash pins enforce immutable experiment artifacts. Method docs and process automation are living.",
+    "sealed_studies_root": "results",
+    "agent_routing_path": "infrastructure/agents/routing.json",
+    "agent_skills_catalog": "infrastructure/agents/skills/catalog.json",
+    "workspaces_root": ".workspaces",
+    "readme_only_roots": [".", "infrastructure"],
+    "readme_only_roots_rationale": "Scientific roots (if present) expose only README.md; governing rules live under infrastructure/.",
+    "allowed_root_markdown": ["AGENTS.md", "METHOD.md", "CHANGELOG.md", "LICENSE"],
+    "allowed_root_markdown_rationale": "Agent runners and method surfaces at repository root.",
+    "candidate_census_directories": "theories/candidates",
+    "candidate_census_front_doors": ["README.md"],
+    "candidate_id_pattern": "C\\d{2}",
+    "candidate_census_rationale": "Optional for programmes that use CNN candidates. lean-LLM-harness uses lineage/techniques; leave pattern for consumer programmes.",
+    "symbol_register": "docs/symbols/symbol-register.json",
+    "symbol_register_rationale": "Optional programme vocabulary path. Consumers create the register when needed; checker stays under infrastructure/.",
+    "sealed_corrections": [],
+    "sealed_corrections_rationale": "Exact-path sanctions for sealed-study corrections. Empty for lean-LLM-harness scaffold."
+  },
+  "policy": {
+    "$comment": "Executable restatements of method commitments. Keep when porting; adapt status vocabularies if needed.",
+    "retrospective_forbidden_statuses": ["derived", "supported"],
+    "retrospective_forbidden_statuses_with_candidate": ["proceed"],
+    "retrospective_rationale": "infrastructure/research/research-method.md ranks retrospective fit lowest. A retrospective study may not report derived/supported.",
+    "promotion_statuses": ["derived", "supported"],
+    "promotion_rationale": "A claim asserting derivation or support must point at evidence or a cited source.",
+    "new_claim_required_fields": ["claim_class", "premises", "falsifier", "scope_if_false", "gate_ids", "evidence_kinds", "dependency_edges", "formal_proof_ids", "verification_ids"],
+    "new_claim_rigor_rationale": "New claim IDs must expose assertion class, premises, falsifier, failure scope, and verification links.",
+    "verification_plan_task_types": ["gate-numerics", "derivation"],
+    "verification_plan_rationale": "New gate-numerics and derivation protocols must declare decisive evidence kind before execution.",
+    "unfrozen_commit_markers": ["NOT YET COMMITTED", "not yet committed"],
+    "freeze_rationale": "Preregistration must be committed before decisive outcomes are viewed.",
+    "conditional_implication_open_premise_statuses": ["derived", "supported"],
+    "conditional_implication_open_premise_rationale": "A conditional implication may not report derived/supported while a named premise remains open.",
+    "lineage_policies": [
+      {"id": "lineage-required", "summary": "No technique may be adopted or adapted without a lineage record and registry entry."},
+      {"id": "method-cites-ids", "summary": "METHOD.md must mention T-XXX for every adopted, adapted, or originated-here technique."},
+      {"id": "verify-not-decide", "summary": "CI and scripts validate structure and consistency only; humans own scientific decisions."},
+      {"id": "admission-on-pr", "summary": "PRs that change method surface or lineage must pass admit.py / pytest."},
+      {"id": "no-programme-science", "summary": "This repository excludes domain ontology and programme-specific experimental claims."},
+      {"id": "seal-then-pin", "summary": "Consuming programmes pin sealed releases under releases/, not arbitrary living tips."}
+    ]
+  }
+}
