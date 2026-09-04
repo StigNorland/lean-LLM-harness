@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/StigNorland/lean-LLM-harness/schemas/technique-lineage.schema.json",
+  "title": "TechniqueLineage",
+  "description": "Machine-facing shape for a lineage technique record (YAML frontmatter / registry projection).",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "status",
+    "sources",
+    "taken",
+    "adapted",
+    "rejected_parts",
+    "serves_commitments",
+    "failure_modes",
+    "date"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^T-[0-9]{3}$",
+      "description": "Stable technique id, e.g. T-001."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "adopted", "adapted", "rejected", "originated-here"]
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["url", "kind"],
+        "properties": {
+          "url": { "type": "string", "minLength": 1 },
+          "kind": {
+            "type": "string",
+            "enum": ["repository", "paper", "docs", "other"]
+          },
+          "commit_or_version": { "type": "string" },
+          "citation": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "taken": { "type": "string" },
+    "adapted": { "type": "string" },
+    "rejected_parts": { "type": "string" },
+    "serves_commitments": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "failure_modes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "owning_issue": { "type": "string" },
+    "pr": { "type": "string" },
+    "validation_evidence": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": true
+}

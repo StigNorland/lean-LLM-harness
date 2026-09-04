@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/StigNorland/lean-LLM-harness/schemas/admission-proposal.schema.json",
+  "title": "AdmissionProposal",
+  "description": "Optional machine record attached to a PR that proposes technique or method change.",
+  "type": "object",
+  "required": [
+    "proposal_id",
+    "technique_id",
+    "requested_status",
+    "rationale",
+    "source_citations",
+    "tests"
+  ],
+  "properties": {
+    "proposal_id": { "type": "string", "minLength": 1 },
+    "technique_id": {
+      "type": "string",
+      "pattern": "^T-[0-9]{3}$"
+    },
+    "requested_status": {
+      "type": "string",
+      "enum": ["proposed", "adopted", "adapted", "rejected", "originated-here"]
+    },
+    "rationale": { "type": "string", "minLength": 1 },
+    "source_citations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "tests": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Test paths or commands that must pass."
+    },
+    "validation_evidence": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "breaking_change": { "type": "boolean" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,16 @@
+{
+  "version": "v0.1.0",
+  "date": "2026-09-04",
+  "method_document": "METHOD.md",
+  "technique_ids": ["T-001"],
+  "commitments_summary": [
+    "explicit-epistemic-status",
+    "permanent-negatives-and-underdetermination",
+    "ordered-gates-no-downstream-rescue",
+    "prereg-before-decisive-step",
+    "automation-verifies-never-decides",
+    "generated-not-transcribed-values"
+  ],
+  "changelog_ref": "CHANGELOG.md#010--2026-09-04",
+  "notes": "First sealed release. Points at SMF-originated core commitments (T-001). Proposed stubs T-002–T-004 are not part of this seal."
+}
