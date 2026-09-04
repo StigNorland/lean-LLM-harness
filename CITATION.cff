@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: "lean-LLM-harness"
+message: "If you use this methodology or pin a release in a research programme, please cite it."
+type: software
+authors:
+  - family-names: Norland
+    given-names: Stig
+repository-code: "https://github.com/StigNorland/lean-LLM-harness"
+url: "https://github.com/StigNorland/lean-LLM-harness"
+abstract: >-
+  A living, controlled, traceable research-honesty methodology: portable
+  tooling that programmes can clone or pin. Borrowed techniques require
+  citations via a lineage ledger; PRs that add features must pass admission
+  validation.
+keywords:
+  - research methodology
+  - epistemic honesty
+  - lineage
+  - reproducible research
+  - living paper
+license: MIT
+version: "0.1.0"
+date-released: "2026-09-04"
