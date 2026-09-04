@@ -1,1 +1,193 @@
-PLACEHOLDER
+{
+  "$comment": "Layout and policy for lean-LLM-harness \u2014 the portable living research methodology. Consuming programmes (e.g. screen-medium-foundations) pin a release of this repo and supply their own programme docs, foundations, and gate instances. See METHOD.md and docs/consuming-programmes.md.",
+  "schema_version": "1.0",
+  "programme": "lean-LLM-harness",
+  "context": {
+    "$comment": "Cold-session loading for this method repo.",
+    "automatic_instructions": [
+      "AGENTS.md"
+    ],
+    "front_doors": [
+      "README.md",
+      "METHOD.md",
+      "lineage/README.md",
+      "docs/update-strategy.md",
+      "docs/consuming-programmes.md",
+      "infrastructure/README.md",
+      "infrastructure/verification/README.md",
+      "infrastructure/research/README.md",
+      "infrastructure/docs/README.md"
+    ],
+    "required_sections": [
+      "Start here",
+      "Contents",
+      "Required context",
+      "Boundaries"
+    ],
+    "target_profiles": []
+  },
+  "layout": {
+    "studies_root": "results",
+    "notary_root": "notary",
+    "template_prefixes": [
+      "infrastructure/results/templates/",
+      "infrastructure/theories/template/",
+      "infrastructure/papers/template/"
+    ],
+    "text_suffixes": [
+      ".md",
+      ".json",
+      ".py",
+      ".yml",
+      ".yaml",
+      ".txt"
+    ],
+    "text_names": [
+      "LICENSE",
+      ".gitignore",
+      ".gitattributes"
+    ]
+  },
+  "reproduction": {
+    "$comment": "Method-repo tiers: lineage admission + repository verification once govern.py is present.",
+    "tiers": {
+      "standard": [
+        [
+          "python",
+          "infrastructure/verification/admit.py"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "infrastructure/verification/tests",
+          "-q"
+        ]
+      ],
+      "full": [
+        [
+          "python",
+          "infrastructure/verification/admit.py"
+        ],
+        [
+          "python",
+          "infrastructure/verification/check_lineage.py"
+        ],
+        [
+          "python",
+          "-m",
+          "pytest",
+          "infrastructure/verification/tests",
+          "-q"
+        ]
+      ]
+    }
+  },
+  "structure": {
+    "$comment": "DECLARATION of what this method repository must contain. Not derived from the filesystem.",
+    "required_paths": [
+      "README.md",
+      "METHOD.md",
+      "AGENTS.md",
+      "CITATION.cff",
+      "LICENSE",
+      "lineage/README.md",
+      "lineage/registry.json",
+      "schemas/technique-lineage.schema.json",
+      "schemas/method-release.schema.json",
+      "schemas/admission-proposal.schema.json",
+      "docs/update-strategy.md",
+      "docs/consuming-programmes.md",
+      "releases/README.md",
+      "infrastructure/README.md",
+      "infrastructure/governance.json",
+      "infrastructure/verification/admit.py",
+      "infrastructure/verification/check_lineage.py",
+      ".github/PULL_REQUEST_TEMPLATE.md",
+      ".github/workflows/admit.yml"
+    ],
+    "living_path_prefixes": [
+      "docs/",
+      "infrastructure/",
+      "lineage/",
+      "schemas/",
+      "METHOD.md",
+      "AGENTS.md",
+      ".github/"
+    ],
+    "living_path_prefixes_rationale": "Method surfaces may change under controlled PR admission; technique records and releases follow lineage/seal rules in METHOD.md.",
+    "pin_exempt_path_prefixes": [
+      "docs/",
+      "infrastructure/",
+      ".github/",
+      "AGENTS.md",
+      "METHOD.md"
+    ],
+    "pin_exempt_path_prefixes_rationale": "Living method docs and tooling are not sealed experiment artifacts. Sealed method releases live under releases/.",
+    "sealed_studies_root": "results",
+    "agent_routing_path": "infrastructure/agents/routing.json",
+    "agent_skills_catalog": "infrastructure/agents/skills/catalog.json",
+    "workspaces_root": ".workspaces",
+    "readme_only_roots": [
+      ".",
+      "infrastructure",
+      "lineage",
+      "releases",
+      "schemas"
+    ],
+    "readme_only_roots_rationale": "Scientific/method roots expose README.md; detailed rules live under infrastructure/ and METHOD.md.",
+    "allowed_root_markdown": [
+      "AGENTS.md",
+      "METHOD.md",
+      "CHANGELOG.md"
+    ],
+    "allowed_root_markdown_rationale": "Agent instructions and the living method paper live at repo root.",
+    "sealed_corrections": [],
+    "sealed_corrections_rationale": "No sealed study migrations in the method repo yet."
+  },
+  "policy": {
+    "$comment": "Executable restatements of METHOD.md commitments. Changing these changes what the method enforces.",
+    "retrospective_forbidden_statuses": [
+      "derived",
+      "supported"
+    ],
+    "retrospective_forbidden_statuses_with_candidate": [
+      "proceed"
+    ],
+    "retrospective_rationale": "Retrospective work may not claim derivation or support; proceed-as-promotion requires a named candidate.",
+    "promotion_statuses": [
+      "derived",
+      "supported"
+    ],
+    "promotion_rationale": "Promotion requires machine-checkable evidence or a cited source \u2014 assertion alone is insufficient.",
+    "new_claim_required_fields": [
+      "claim_class",
+      "premises",
+      "falsifier",
+      "scope_if_false",
+      "gate_ids",
+      "evidence_kinds",
+      "dependency_edges",
+      "formal_proof_ids",
+      "verification_ids"
+    ],
+    "new_claim_rigor_rationale": "New claims must declare class, premises, falsifier, scope, gates, evidence, dependencies, and verification links.",
+    "verification_plan_task_types": [
+      "gate-numerics",
+      "derivation"
+    ],
+    "verification_plan_rationale": "Heavy protocols must declare independent replay, certificate, formal proof, or mutation evidence before execution.",
+    "unfrozen_commit_markers": [
+      "NOT YET COMMITTED",
+      "not yet committed"
+    ],
+    "freeze_rationale": "Preregistration must be committed before decisive outcomes are viewed.",
+    "lineage_required_for_adoption": true,
+    "lineage_required_rationale": "Borrowed techniques must have lineage/techniques records and registry entries before adoption; silent assimilation is forbidden.",
+    "conditional_implication_open_premise_statuses": [
+      "derived",
+      "supported"
+    ],
+    "conditional_implication_open_premise_rationale": "Checked implications are not derived while named premises remain open."
+  }
+}
