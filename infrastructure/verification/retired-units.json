@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "retired-units",
+  "description": "Retired scientific units. Empty starter for lean-LLM-harness consumers; fill when sealing instruments.",
+  "units": []
+}

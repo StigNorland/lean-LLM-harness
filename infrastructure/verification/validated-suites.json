@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "validated-suites",
+  "description": "Executable suites hashed at human accept. Empty starter for lean-LLM-harness; record suites after accept.",
+  "suites": []
+}
