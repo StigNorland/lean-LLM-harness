@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "techniques": [
+    {
+      "id": "T-001",
+      "path": "lineage/techniques/T-001-smf-core-commitments.md",
+      "title": "SMF core commitments",
+      "status": "originated-here",
+      "date": "2026-09-04"
+    },
+    {
+      "id": "T-002",
+      "path": "lineage/techniques/T-002-showyourwork-paper-figure-binding.md",
+      "title": "showyourwork paper↔figure binding",
+      "status": "proposed",
+      "date": "2026-09-04"
+    },
+    {
+      "id": "T-003",
+      "path": "lineage/techniques/T-003-validation-gated-skill-evolution.md",
+      "title": "Validation-gated skill evolution",
+      "status": "proposed",
+      "date": "2026-09-04"
+    },
+    {
+      "id": "T-004",
+      "path": "lineage/techniques/T-004-feasibility-quarantine.md",
+      "title": "Feasibility quarantine",
+      "status": "proposed",
+      "date": "2026-09-04"
+    }
+  ]
+}
