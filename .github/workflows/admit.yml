@@ -1,0 +1,28 @@
+name: admit
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+jobs:
+  admit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pytest jsonschema
+
+      - name: Run pytest
+        run: python -m pytest infrastructure/verification/tests -q
+
+      - name: Run admit.py
+        run: python infrastructure/verification/admit.py
+
+      - name: Run check_lineage.py
+        run: python infrastructure/verification/check_lineage.py
